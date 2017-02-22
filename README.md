@@ -51,4 +51,12 @@ So this is what we do:
 2. As a pre-build step, the `version.sh` script is executed
 3. Then the build is run as normal.
 
+Step two can for instance take the following form:
+
+    wget https://raw.githubusercontent.com/asgeirn/version/master/version.sh | bash
+
+If you're concerned of someone pushing a rogue version of this script that does `rm -rf /` instead, you could link directly to a specific commit instead:
+
+    wget https://raw.githubusercontent.com/asgeirn/version/4532adf6465302b0d5af39f26dcaca8cb19bfd42/version.sh | bash
+
 
