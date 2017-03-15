@@ -43,7 +43,7 @@ It then combines these:
 
 For the little log above, it would produce `1.0.0-2`, version 1.0.0 as declared in the Git log, but the second build from that version.
 
-For Maven projects, the [Versions](http://www.mojohaus.org/versions-maven-plugin/) plugin can be used to set the version number prior to the build.
+For Maven projects, the [Versions](http://www.mojohaus.org/versions-maven-plugin/) plugin can be used to set the version number prior to the build, using `mvn versions:set -DnewVersion=$VERSION`
 
 So this is what we do:
 
@@ -59,4 +59,19 @@ If you're concerned of someone pushing a rogue version of this script that does 
 
     wget https://raw.githubusercontent.com/asgeirn/version/4532adf6465302b0d5af39f26dcaca8cb19bfd42/version.sh | bash
 
+# Gradle
 
+In Gradle, you can do this evaluation directly in `build.gradle`:
+
+    def gitLogVersion() {
+      new ByteArrayOutputStream().withStream { os ->
+        def result = exec {
+          executable = 'bash'
+          args = ['-c', 'git log --oneline | nl -nln |  perl -lne \'if (/^(\\d+).*Version (\\d+\\.\\d+\\.\\d+)/) { print "$2-$1"; exit; }\'']
+          standardOutput = os
+        }
+        return os.toString().trim()
+      }
+    }
+
+    version = gitLogVersion()
