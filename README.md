@@ -9,7 +9,7 @@ external assumptions or tools when doing so.
 So I've advocated a strategy where the version number is taken from the Git log, but a release (or build)
 number is automatically added.
 
-The gist of it is like this:
+The gist of it looks like this:
 
     git log --oneline | nl -nln | perl -lne 'if (/^(\d+).*Version (\d+\.\d+\.\d+)/) { print "$2-$1"; exit; }'
 
