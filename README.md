@@ -3,7 +3,7 @@
 One of [Praqma's Continuous Delivery](http://www.praqma.com/training/code-kickstart/) recommendations 
 is to always produce versioned artifacts.
 
-There are of course many strategies for doing so, but I've found it easier to not depend on too many 
+There are of course many strategies for this, but I've found it easier to not depend on too many 
 external assumptions or tools when doing so.
 
 So I've advocated a strategy where the version number is taken from the Git log, but a release (or build)
