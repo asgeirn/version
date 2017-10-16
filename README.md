@@ -11,7 +11,7 @@ number is automatically added.
 
 The gist of it is like this:
 
-    git log --oneline | nl -nln | perl -lne 'if (/^(\d+).*Version (\d+\.\d+\.\d+)/) { print "$2-$1"; exit; }
+    git log --oneline | nl -nln | perl -lne 'if (/^(\d+).*Version (\d+\.\d+\.\d+)/) { print "$2-$1"; exit; }'
 
 Let's take it step by step:
 
