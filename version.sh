@@ -5,7 +5,7 @@ VERSION=$(git log --oneline | nl -nln | perl -lne 'if (/^(\d+).*Version (\d+\.\d
 if [[ ".$VERSION" != "." ]]
 then
     echo Setting version to $VERSION
-    mvn versions:set -DnewVersion=$VERSION -DgenerateBackupPoms=false
+    mvn versions:set -DnewVersion=$VERSION
 else
     echo No version number found.
 fi
